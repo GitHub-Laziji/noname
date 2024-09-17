@@ -115,6 +115,8 @@ window.noname_source_list = [
 	"card/zhenfa.js",
 	"card/zhulu.js",
 
+	"character/custom/index.js",
+
 	"character/gujian.js",
 	"character/gwent.js",
 	"character/hearth.js",
