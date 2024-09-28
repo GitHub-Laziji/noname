@@ -1,11 +1,16 @@
 import { game } from "../../noname.js";
 
+// roles
 import guojia from "./role/guojia.js";
-const custom = [guojia];
+import yuanshao00 from "./role/yuanshao00.js";
+const ROLES = [guojia, yuanshao00];
+
+// group info
+const GROUP_IDX="custom";
 
 game.import("character", function () {
 	let base = {
-		name: "custom",
+		name: GROUP_IDX,
 		connect: true,
 		character: {},
 		characterSort: {},
@@ -20,24 +25,23 @@ game.import("character", function () {
 		translate: {},
 		pinyins: {},
 	};
-	for (let ch of custom) {
-		let sk = [];
-		for (let k in ch.skills) {
-			sk.push(k);
-			base.translate[k] = ch.skills[k].name;
-			base.translate[k + '_info'] = ch.skills[k].info;
-			base.skill[k] = ch.skills[k].handle;
-			for (let v in ch.skills[k].voices) {
-				base.translate["#" + v] = ch.skills[k].voices[v];
-			}
+	for (let role of ROLES) {
+		const ROLE_IDX=`${GROUP_IDX}.${role.code}`
+		let skillOutArr = [];
+		for (let skillCode in role.skills) {
+			const SKILL_IDX= `${ROLE_IDX}.${skillCode}`;
+			let skill=role.skills[skillCode];
+			skillOutArr.push(SKILL_IDX);
+			base.translate[SKILL_IDX] = skill.name;
+			base.translate[SKILL_IDX + '_info'] = skill.info;
+			base.skill[SKILL_IDX] = skill.handle;
 		}
-		base.translate["#" + ch.code + ':die'] = ch.voices.die;
-		base.character[ch.code] = [ch.sex, ch.org, ch.hp, sk];
-		base.translate[ch.code] = ch.name;
-		base.characterIntro[ch.code] = ch.intro;
+		base.translate["#" + ROLE_IDX + ':die'] = role.voices.die;
+		base.character[ROLE_IDX] = [role.sex, role.org, role.hp, skillOutArr];
+		base.translate[ROLE_IDX] = role.name;
+		base.characterIntro[ROLE_IDX] = role.intro;
 		// TODO
-		base.perfectPair[ch.code] = [ch.code];
-		console.log(base.character)
+		base.perfectPair[ROLE_IDX] = [ROLE_IDX];
 	}
 	return base;
 });
