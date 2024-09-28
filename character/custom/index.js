@@ -36,7 +36,7 @@ game.import("character", function () {
 			base.translate[SKILL_IDX + '_info'] = skill.info;
 			base.skill[SKILL_IDX] = skill.handle;
 		}
-		base.translate["#" + ROLE_IDX + ':die'] = role.voices.die;
+		// base.translate["#" + ROLE_IDX + ':die'] = role.voices.die;
 		base.character[ROLE_IDX] = [role.sex, role.org, role.hp, skillOutArr];
 		base.translate[ROLE_IDX] = role.name;
 		base.characterIntro[ROLE_IDX] = role.intro;

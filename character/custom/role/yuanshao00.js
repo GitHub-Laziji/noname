@@ -2,18 +2,15 @@ import { lib, game, ui, get, ai, _status } from "../../../noname.js";
 
 export default {
     code: "yuanshao00",
-    name: "袁绍测试",
+    name: "袁绍",
     sex: "male",
     org: "qun",
     hp: 4,
-    intro: "字奉孝，颍川阳翟人，官至军师祭酒。惜天妒英才，英年早逝。有诗云：“良计环环不遗策，每临制变满座惊”。",
-    voices: {
-        die: "咳，咳……"
-    },
+    intro: "乱击+制蛮",
     skills: {
         fangjian: {
-            name: "放箭",
-            info: "放箭",
+            name: "乱击",
+            info: "出牌阶段，你可以将任意两张相同花色的手牌当做【万箭齐发】使用。",
             handle: {
                 audio: "luanji",
                 enable: "phaseUse",
@@ -95,7 +92,7 @@ export default {
         },
         aaazhiman: {
             name: "制蛮",
-            info: "制蛮",
+            info: "当你对一名其他角色造成伤害时，你可以防止此伤害，然后获得其区域内的一张牌。",
             handle: {
                 audio: "zhiman",
                 trigger: { source: "damageBegin2" },
