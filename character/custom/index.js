@@ -26,7 +26,7 @@ game.import("character", function () {
 		pinyins: {},
 	};
 	for (let role of ROLES) {
-		const ROLE_IDX=`${GROUP_IDX}.${role.code}`
+		const ROLE_IDX=`${GROUP_IDX}.${role.code}${role.image?("$"+role.image):""}`
 		let skillOutArr = [];
 		for (let skillCode in role.skills) {
 			const SKILL_IDX= `${ROLE_IDX}.${skillCode}`;

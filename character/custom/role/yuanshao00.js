@@ -7,6 +7,7 @@ export default {
     org: "qun",
     hp: 4,
     intro: "乱击+制蛮",
+    image: "re_yuanshao",
     skills: {
         fangjian: {
             name: "乱击",
@@ -73,7 +74,7 @@ export default {
                         player.countCards("h") > player.hp
                     );
                 },
-                async content() {},
+                async content() { },
                 mod: {
                     maxHandcard(player, num) {
                         if (player.hasZhuSkill("xueyi")) {

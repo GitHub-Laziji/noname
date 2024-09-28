@@ -193,7 +193,12 @@ Reflect.defineProperty(HTMLDivElement.prototype, "setBackground", {
 			} else if (modeimage) src = `image/mode/${modeimage}/character/${name}${ext}`;
 			else if (type == "character" && lib.config.skin[name] && arguments[2] != "noskin") src = `image/skin/${name}/${lib.config.skin[name]}${ext}`;
 			else if (type == "character") {
-				src = `image/character/${gzbool ? "gz_" : ""}${name}${ext}`;
+				let cusNameReg = /^\w+\.\w+\$(\w+)/g;
+				if(cusNameReg.test(name)){
+					src = `image/character/${name.replaceAll(cusNameReg,"$1")}.jpg`;
+				}else{
+					src = `image/character/${gzbool ? "gz_" : ""}${name}${ext}`;
+				}
 			} else src = `image/${type}/${subfolder}/${name}${ext}`;
 		} else src = `image/${name}${ext}`;
 		this.style.backgroundPositionX = "center";
