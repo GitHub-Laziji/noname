@@ -1,25 +1,19 @@
 import { lib, game, ui, get, ai, _status } from "../../../noname.js";
 
 export default {
-    code: "guojia33",
+    code: "guojia00",
     name: "郭嘉33测试",
     sex: "male",
     org: "wei",
     hp: 10,
     intro: "字奉孝，颍川阳翟人，官至军师祭酒。惜天妒英才，英年早逝。有诗云：“良计环环不遗策，每临制变满座惊”。",
-    voices: {
-        die: "咳，咳……"
-    },
+    image: "guojia",
     skills: {
-        tiandu33: {
-            name: "天妒33",
+        tiandu: {
+            name: "天妒",
             info: "当你的判定牌生效后，你可以获得之。",
-            voices: {
-                "tiandu1": "罢了。",
-                "tiandu2": "也好。"
-            },
             handle: {
-                audio: 2,
+                audio: "tiandu",
                 audioname: ["re_guojia", "xizhicai", "gz_nagisa"],
                 trigger: { player: "judgeEnd" },
                 preHidden: true,
@@ -38,15 +32,11 @@ export default {
                 },
             }
         },
-        yiji33: {
-            name: "遗计33",
+        yiji: {
+            name: "遗计_4",
             info: "当你受到1点伤害后，你可以观看牌堆顶的两张牌，然后将其分配给任意角色。",
-            voices: {
-                "yiji1": "就这样吧。",
-                "yiji2": "哦？"
-            },
             handle: {
-                audio: 2,
+                audio: "yiji",
                 trigger: { player: "damageEnd" },
                 frequent: true,
                 filter(event) {
@@ -56,7 +46,7 @@ export default {
                     return event.num;
                 },
                 async content(event, trigger, player) {
-                    const { cards } = await game.cardsGotoOrdering(get.cards(2));
+                    const { cards } = await game.cardsGotoOrdering(get.cards(4));
                     if (_status.connectMode)
                         game.broadcastAll(function () {
                             _status.noclearcountdown = true;

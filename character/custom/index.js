@@ -1,9 +1,9 @@
 import { game } from "../../noname.js";
 
 // roles
-import guojia from "./role/guojia.js";
+import guojia00 from "./role/guojia00.js";
 import yuanshao00 from "./role/yuanshao00.js";
-const ROLES = [guojia, yuanshao00];
+const ROLES = [guojia00, yuanshao00];
 
 // group info
 const GROUP_IDX="custom";
