@@ -1,9 +1,13 @@
 import { game } from "../../noname.js";
 
-// roles
-import guojia00 from "./role/guojia00.js";
-import yuanshao00 from "./role/yuanshao00.js";
-const ROLES = [guojia00, yuanshao00];
+import roleSource from "./source.js"
+
+// load roles
+const ROLES = [];
+for (let src of roleSource) {
+	let m = await import(`./role/${src}`);
+	ROLES.push(m.default);
+}
 
 // group info
 const GROUP_IDX = "custom";
@@ -36,7 +40,6 @@ game.import("character", function () {
 			base.translate[SKILL_IDX + '_info'] = skill.info;
 			base.skill[SKILL_IDX] = skill.handle;
 		}
-		// base.translate["#" + ROLE_IDX + ':die'] = role.voices.die;
 		base.character[ROLE_IDX] = [role.sex, role.org, role.hp, skillOutArr, undefined, {}];
 		if (role.image) {
 			base.character[ROLE_IDX][5].image = role.image;
