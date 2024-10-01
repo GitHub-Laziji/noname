@@ -6,7 +6,7 @@ import yuanshao00 from "./role/yuanshao00.js";
 const ROLES = [guojia00, yuanshao00];
 
 // group info
-const GROUP_IDX="custom";
+const GROUP_IDX = "custom";
 
 game.import("character", function () {
 	let base = {
@@ -26,18 +26,21 @@ game.import("character", function () {
 		pinyins: {},
 	};
 	for (let role of ROLES) {
-		const ROLE_IDX=`${GROUP_IDX}.${role.code}${role.image?("$"+role.image):""}`
+		const ROLE_IDX = `${GROUP_IDX}.${role.code}`
 		let skillOutArr = [];
 		for (let skillCode in role.skills) {
-			const SKILL_IDX= `${ROLE_IDX}.${skillCode}`;
-			let skill=role.skills[skillCode];
+			const SKILL_IDX = `${ROLE_IDX}.${skillCode}`;
+			let skill = role.skills[skillCode];
 			skillOutArr.push(SKILL_IDX);
 			base.translate[SKILL_IDX] = skill.name;
 			base.translate[SKILL_IDX + '_info'] = skill.info;
 			base.skill[SKILL_IDX] = skill.handle;
 		}
 		// base.translate["#" + ROLE_IDX + ':die'] = role.voices.die;
-		base.character[ROLE_IDX] = [role.sex, role.org, role.hp, skillOutArr];
+		base.character[ROLE_IDX] = [role.sex, role.org, role.hp, skillOutArr, undefined, {}];
+		if (role.image) {
+			base.character[ROLE_IDX][5].image = role.image;
+		}
 		base.translate[ROLE_IDX] = role.name;
 		base.characterIntro[ROLE_IDX] = role.intro;
 		// TODO

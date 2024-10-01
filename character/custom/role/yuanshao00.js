@@ -7,7 +7,7 @@ export default {
     org: "qun",
     hp: 4,
     intro: "乱击+制蛮",
-    image: "re_yuanshao",
+    image: "re_yuanshao.jpg",
     skills: {
         fangjian: {
             name: "乱击",
