@@ -9,7 +9,7 @@ export default {
     intro: "乱击+制蛮",
     image: "re_yuanshao.jpg",
     skills: {
-        fangjian: {
+        luanji: {
             name: "乱击",
             info: "出牌阶段，你可以将任意两张相同花色的手牌当做【万箭齐发】使用。",
             handle: {
@@ -59,39 +59,8 @@ export default {
                     },
                 },
             },
-            xueyi: {
-                trigger: { player: "phaseDiscardBefore" },
-                audio: 2,
-                audioname: ["re_yuanshao"],
-                forced: true,
-                firstDo: true,
-                filter(event, player) {
-                    return (
-                        player.hasZhuSkill("xueyi") &&
-                        game.hasPlayer(function (current) {
-                            return current != player && current.group == "qun";
-                        }) &&
-                        player.countCards("h") > player.hp
-                    );
-                },
-                async content() { },
-                mod: {
-                    maxHandcard(player, num) {
-                        if (player.hasZhuSkill("xueyi")) {
-                            return (
-                                num +
-                                game.countPlayer(function (current) {
-                                    if (player != current && current.group == "qun") return 2;
-                                })
-                            );
-                        }
-                        return num;
-                    },
-                },
-                zhuSkill: true,
-            },
         },
-        aaazhiman: {
+        zhiman: {
             name: "制蛮",
             info: "当你对一名其他角色造成伤害时，你可以防止此伤害，然后获得其区域内的一张牌。",
             handle: {
