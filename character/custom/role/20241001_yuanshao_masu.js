@@ -1,7 +1,7 @@
 import { lib, game, ui, get, ai, _status } from "../../../noname.js";
 
 export default {
-    code: "yuanshao00",
+    code: "20241001_yuanshao_masu",
     name: "乱击制蛮袁绍",
     sex: "male",
     org: "qun",

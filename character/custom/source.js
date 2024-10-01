@@ -1,5 +1,5 @@
 
 export default [
-    "guojia00.js",
-    "yuanshao00.js"
+    "20240930_guojia_test.js",
+    "20241001_yuanshao_masu.js"
 ]
